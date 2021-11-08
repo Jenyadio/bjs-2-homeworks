@@ -109,17 +109,14 @@ class PrintEditionItem {
   class Student {
 
     constructor(name) {
-      this.name;
-      this.subjects = {
-        algebra: [],
-        geometry: []
-      }
+      this.name = name,
+      this.subjects = {}
     }
   
     addMark(mark, subject) {
       if (mark < 6 && mark > 0) {
         if (this.subjects[subject] === undefined) {
-          this.subjects[subject] = mark;
+          this.subjects[subject] = [mark];
         } else {
           this.subjects[subject].push(mark);
         }
