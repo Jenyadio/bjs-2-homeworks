@@ -126,9 +126,9 @@ class PrintEditionItem {
     } 
   
     getAverageBySubject(subject) {
-      if (subject === 'algebra' || subject === 'geometry') {
+      if (this.subjects[subject] !== undefined) {
         return this.subjects[subject].reduce((a, b) => (a + b)) / this.subjects[subject].length;
-      } else {
+      } else if (this.subjects[subject] === undefined) {
         return 'Несуществующий предмет';
       }
     }
