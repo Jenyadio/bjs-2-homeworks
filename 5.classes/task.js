@@ -134,11 +134,10 @@ class PrintEditionItem {
     }
   
     getAverage() {
-      for (let i = 0; i < this.subjects.length; i++) {
-        let arrMarks = this.subjects[i].concat(this.subjects[i++]);
-        let sumMarks = arrMarks.reduce((acc, item) => acc += item);
-        return sumMarks / arrMarks.length; 
-      }
+      let subjectsKeys = Object.keys(this.subjects)
+      let sumMarks = 0;
+      subjectsKeys.forEach((subject) => sumMarks += this.getAverageBySubject(subject));
+      return sumMarks / subjectsKeys.length;
     }
   
     exclude(reason) {
