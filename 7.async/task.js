@@ -41,11 +41,13 @@ class AlarmClock {
       let checkClock = alarm => {
         if (this.getCurrentFormattedTime() === alarm.time) {
           alarm.callback();
-        } else if (this.timerId === null) {
-          this.timerId = setInterval(this.alarmCollection.forEach((alarm) =>
-          checkClock(alarm)), 2000);
         }
       }
+
+      if (this.timerId === null) {
+        this.timerId = setInterval(this.alarmCollection.forEach((alarm) => checkClock(alarm)), 2000);
+      }
+      return;
     }
   
     stop() {
@@ -60,6 +62,7 @@ class AlarmClock {
     }
   
     clearAlarms() {
+      this.stop();
       this.alarmCollection.length = 0;
     }
   }
